@@ -13,22 +13,19 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <!--
 Element wrapper for the `marked` (http://marked.org/) library.
 
-@class marked-element
+@class z-markdown
 @blurb Element wrapper for the marked library.
 @status alpha
 @snap snap.png
 -->
-<polymer-element name="marked-element" attributes="text">
+<polymer-element name="z-markdown" attributes="text">
 <script>
 
-  Polymer('marked-element', {
+  Polymer('z-markdown', {
 
     text: '',
 
     attached: function() {
-      marked.setOptions({
-        highlight: this.highlight.bind(this)
-      });
       if (!this.text) {
         this.text = this.innerHTML;
       }
@@ -40,11 +37,6 @@ Element wrapper for the `marked` (http://marked.org/) library.
       } else {
         this.innerHTML = "";
       }
-    },
-
-    highlight: function(code, lang) {
-      var event = this.fire('marked-js-highlight', {code: code, lang: lang});
-      return event.detail.code || code;
     }
 
   });
